@@ -4,7 +4,8 @@ from calculator import Calculator
 
 class TestCalculatorPositive(unittest.TestCase):
 
-    def setUp(self) -> None:
+    def __init__(self, *args, **kwargs):
+        super(TestCalculatorPositive, self).__init__(*args, **kwargs)
         self.calc = Calculator()
 
     def test_sum(self):
@@ -26,7 +27,8 @@ class TestCalculatorPositive(unittest.TestCase):
 
 class TestCalculatorNegative(unittest.TestCase):
 
-    def setUp(self) -> None:
+    def __init__(self, *args, **kwargs):
+        super(TestCalculatorNegative, self).__init__(*args, **kwargs)
         self.calc = Calculator()
 
     @unittest.expectedFailure
