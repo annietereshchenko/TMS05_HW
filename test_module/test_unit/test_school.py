@@ -12,11 +12,21 @@ class TestForSchool(unittest.TestCase):
         self.artem = Students("Sosna", 2, [2, 10, 5, 6, 2])
         self.sasha = Students("Saga", 1, [6, 6, 6, 6, 6])
 
+    def test_get_students(self):
+        self.school.add_student(self.dzima)
+        self.school.add_student(self.nikita)
+        number_of_added_students = len(self.school.get_all_students())
+        self.assertEqual(number_of_added_students, 2)
+
+    def test_get_students_empty_school(self):
+        number_of_added_students = len(self.school.get_all_students())
+        self.assertEqual(number_of_added_students, 0)
+
     def test_get_students_with_certain_marks(self):
         self.school.add_student(self.dzima)
         self.school.add_student(self.nikita)
-        result = self.school.show_student_with_marks(5, 6)
-        self.assertEqual(len(result), 1)
+        number_of_students_with_marks = len(self.school.show_student_with_marks(5, 6))
+        self.assertEqual(number_of_students_with_marks, 1)
 
     def test_get_students_with_one_certain_mark(self):
         """""
@@ -26,8 +36,8 @@ class TestForSchool(unittest.TestCase):
         смысла
         """""
         self.school.add_student(self.sasha)
-        result = self.school.show_student_with_marks(5, 6)
-        self.assertEqual(len(result), 1)
+        number_of_students_with_mark = len(self.school.show_student_with_marks(5, 6))
+        self.assertEqual(number_of_students_with_mark, 1)
 
     def test_get_students_with_not_all_certain_marks(self):
         """""
@@ -35,30 +45,30 @@ class TestForSchool(unittest.TestCase):
         но так же у него есть другие оценки
         """""
         self.school.add_student(self.artem)
-        result = self.school.show_student_with_marks(5, 6)
-        self.assertEqual(len(result), 0)
+        number_of_students_with_marks = len(self.school.show_student_with_marks(5, 6))
+        self.assertEqual(number_of_students_with_marks, 0)
 
     def test_get_students_with_certain_marks_empty_school(self):
-        result = self.school.show_student_with_marks(5, 6)
-        self.assertEqual(len(result), 0)
+        number_of_students_with_marks = len(self.school.show_student_with_marks(5, 6))
+        self.assertEqual(number_of_students_with_marks, 0)
 
     def test_get_students_with_group(self):
         self.school.add_student(self.sergey)
         self.school.add_student(self.artem)
         self.school.add_student(self.nikita)
-        result = self.school.show_student_with_group(2)
-        self.assertEqual(len(result), 2)
+        number_of_students_in_group = len(self.school.show_student_with_group(2))
+        self.assertEqual(number_of_students_in_group, 2)
 
     def test_get_students_with_non_existent_group(self):
         self.school.add_student(self.sergey)
         self.school.add_student(self.artem)
         self.school.add_student(self.nikita)
-        result = self.school.show_student_with_group(3)
-        self.assertEqual(len(result), 0)
+        number_of_students_in_group = len(self.school.show_student_with_group(3))
+        self.assertEqual(number_of_students_in_group, 0)
 
     def test_get_students_with_group_empty_school(self):
-        result = self.school.show_student_with_group(1)
-        self.assertEqual(len(result), 0)
+        number_of_students_in_group = len(self.school.show_student_with_group(1))
+        self.assertEqual(number_of_students_in_group, 0)
 
     def test_get_students_with_automat_lower_bound(self):
         """""
@@ -68,8 +78,8 @@ class TestForSchool(unittest.TestCase):
         6
         """""
         self.school.add_student(self.sasha)
-        result = self.school.show_students_with_automat(7)
-        self.assertEqual(len(result), 0)
+        number_of_students_with_automat = len(self.school.show_students_with_automat(7))
+        self.assertEqual(number_of_students_with_automat, 0)
 
     def test_get_students_with_automat_bound(self):
         """""
@@ -79,8 +89,8 @@ class TestForSchool(unittest.TestCase):
         7
         """""
         self.school.add_student(self.nikita)
-        result = self.school.show_students_with_automat(7)
-        self.assertEqual(len(result), 1)
+        number_of_students_with_automat = len(self.school.show_students_with_automat(7))
+        self.assertEqual(number_of_students_with_automat, 1)
 
     def test_get_students_with_automat_upper_bound(self):
         """""
@@ -90,12 +100,12 @@ class TestForSchool(unittest.TestCase):
         8
         """""
         self.school.add_student(self.sergey)
-        result = self.school.show_students_with_automat(7)
-        self.assertEqual(len(result), 1)
+        number_of_students_with_automat = len(self.school.show_students_with_automat(7))
+        self.assertEqual(number_of_students_with_automat, 1)
 
     def test_get_students_with_automat_empty_school(self):
-        result = self.school.show_students_with_automat(7)
-        self.assertEqual(len(result), 0)
+        number_of_students_with_automat = len(self.school.show_students_with_automat(7))
+        self.assertEqual(number_of_students_with_automat, 0)
 
 
 if __name__ == '__main__':

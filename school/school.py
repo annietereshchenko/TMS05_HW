@@ -26,6 +26,9 @@ class School:
     def add_student(self, student):
         self.students.append(student)
 
+    def get_all_students(self):
+        return [student for student in self.students]
+
     def show_student_with_marks(self, *marks):
         students_list = []
         for student in self.students:
