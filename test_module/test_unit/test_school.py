@@ -49,6 +49,13 @@ class TestForSchool(unittest.TestCase):
         result = self.school.show_student_with_group(2)
         self.assertEqual(len(result), 2)
 
+    def test_get_students_with_non_existent_group(self):
+        self.school.add_student(self.sergey)
+        self.school.add_student(self.artem)
+        self.school.add_student(self.nikita)
+        result = self.school.show_student_with_group(3)
+        self.assertEqual(len(result), 0)
+
     def test_get_students_with_group_empty_school(self):
         result = self.school.show_student_with_group(1)
         self.assertEqual(len(result), 0)
