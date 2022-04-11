@@ -31,21 +31,17 @@ class TestCalculatorNegative(unittest.TestCase):
     def setUpClass(cls):
         cls.calc = Calculator()
 
-    @unittest.expectedFailure
     def test_failed_sum(self):
-        self.assertEqual(self.calc.sum(4, 2), 7)
+        self.assertNotEqual(self.calc.sum(4, 2), 7)
 
-    @unittest.expectedFailure
     def test_failed_sub(self):
-        self.assertEqual(self.calc.subtraction(12, 2), 9)
+        self.assertNotEqual(self.calc.subtraction(12, 2), 9)
 
-    @unittest.expectedFailure
     def test_failed_multiple(self):
-        self.assertEqual(self.calc.multiplication(5, 4), 3)
+        self.assertNotEqual(self.calc.multiplication(5, 4), 3)
 
-    @unittest.expectedFailure
     def test_failed_div(self):
-        self.assertEqual(self.calc.division(12, 6), 3)
+        self.assertNotEqual(self.calc.division(12, 6), 3)
 
 
 if __name__ == '__main__':
