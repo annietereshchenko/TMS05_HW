@@ -3,8 +3,6 @@ from school import Students, School
 
 
 class TestForSchool(unittest.TestCase):
-    def __init__(self, *args, **kwargs):
-        super(TestForSchool, self).__init__(*args, **kwargs)
 
     def setUp(self) -> None:
         self.school = School()
@@ -23,6 +21,7 @@ class TestForSchool(unittest.TestCase):
     def test_get_students_with_one_certain_mark(self):
         """""
         Здесь возьмем студента sasha, у которого все оценки только 6 в списке.
+        Но подавать на вход будет две оценки 5 и 6
         Проверять студента, у которого только 5 в списке, наверное, не имеет
         смысла
         """""
@@ -54,19 +53,38 @@ class TestForSchool(unittest.TestCase):
         result = self.school.show_student_with_group(1)
         self.assertEqual(len(result), 0)
 
-    def test_get_students_with_automat(self):
+    def test_get_students_with_automat_lower_bound(self):
         """""
         Здесь воспользуемся методом граничных значений
         Средняя оценка для автомата - 7
-        Возьмем студентов со следующим средним баллом -
-        6, 7 и 8. Единственное, я сомневаюсь, 
-        надо ли писать три разных теста на каждое значение
+        Возьмем студента со следующим средним баллом -
+        6
+        """""
+        self.school.add_student(self.sasha)
+        result = self.school.show_students_with_automat(7)
+        self.assertEqual(len(result), 0)
+
+    def test_get_students_with_automat_bound(self):
+        """""
+        Здесь воспользуемся методом граничных значений
+        Средняя оценка для автомата - 7
+        Возьмем студента со следующим средним баллом -
+        7
+        """""
+        self.school.add_student(self.nikita)
+        result = self.school.show_students_with_automat(7)
+        self.assertEqual(len(result), 1)
+
+    def test_get_students_with_automat_upper_bound(self):
+        """""
+        Здесь воспользуемся методом граничных значений
+        Средняя оценка для автомата - 7
+        Возьмем студента со следующим средним баллом -
+        8
         """""
         self.school.add_student(self.sergey)
-        self.school.add_student(self.nikita)
-        self.school.add_student(self.artem)
         result = self.school.show_students_with_automat(7)
-        self.assertEqual(len(result), 2)
+        self.assertEqual(len(result), 1)
 
     def test_get_students_with_automat_empty_school(self):
         result = self.school.show_students_with_automat(7)

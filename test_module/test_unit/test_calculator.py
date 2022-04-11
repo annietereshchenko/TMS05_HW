@@ -4,9 +4,9 @@ from calculator import Calculator
 
 class TestCalculatorPositive(unittest.TestCase):
 
-    def __init__(self, *args, **kwargs):
-        super(TestCalculatorPositive, self).__init__(*args, **kwargs)
-        self.calc = Calculator()
+    @classmethod
+    def setUpClass(cls):
+        cls.calc = Calculator()
 
     def test_sum(self):
         self.assertEqual(self.calc.sum(5, 4), 9)
@@ -27,9 +27,9 @@ class TestCalculatorPositive(unittest.TestCase):
 
 class TestCalculatorNegative(unittest.TestCase):
 
-    def __init__(self, *args, **kwargs):
-        super(TestCalculatorNegative, self).__init__(*args, **kwargs)
-        self.calc = Calculator()
+    @classmethod
+    def setUpClass(cls):
+        cls.calc = Calculator()
 
     @unittest.expectedFailure
     def test_failed_sum(self):
