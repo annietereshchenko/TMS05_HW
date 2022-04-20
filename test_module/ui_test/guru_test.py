@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from random import randint
+from .email_service import get_random_email
 
 
 class TestGuru:
@@ -26,9 +26,6 @@ class TestGuru:
         yield
         self.browser.quit()
 
-    def get_random_email(self):
-        return 'test' + str(randint(10000, 20000)) + '@mail.com'
-
     def test_registration_check_welcome_msg(self, setUp):
 
         first_name = self.browser.find_element(by=By.NAME, value='firstName')
@@ -48,7 +45,7 @@ class TestGuru:
         first_name.send_keys(self.first_name)
         last_name.send_keys(self.last_name)
         phone.send_keys(self.phone)
-        email.send_keys(TestGuru.get_random_email(self))
+        email.send_keys(get_random_email())
         address.send_keys(self.address)
         city.send_keys(self.city)
         state.send_keys(self.city)
