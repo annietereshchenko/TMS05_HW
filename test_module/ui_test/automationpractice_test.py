@@ -115,7 +115,13 @@ class TestAP:
         addition_info.send_keys(self.addition_info)
         home_phone.send_keys(self.home_phone)
         mobile_phone.send_keys(self.phone)
-        address_alias.send_keys(self.address_alias)
+
+        if address_alias.get_attribute('value') != '':
+            address_alias.clear()
+            address_alias.send_keys(self.address_alias)
+        else:
+            address_alias.send_keys(self.address_alias)
+
         register_button.click()
 
         WebDriverWait(self.browser, 10).until(
