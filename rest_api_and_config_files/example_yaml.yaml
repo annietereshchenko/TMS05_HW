@@ -1,0 +1,20 @@
+- Anna:
+    name: Anna Tereshchenko
+    job: QA
+    skills:
+      - python
+      - java
+    age: 28
+    hobbies:
+      - eat
+      - sleep
+      - repeat
+- Sergey:
+    name: Sergey Sheva
+    job: Developer
+    skills:
+      - .NET
+    age: 26
+    hobbies:
+      - beer
+      - video games
