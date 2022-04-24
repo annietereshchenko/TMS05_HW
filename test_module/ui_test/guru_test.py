@@ -26,7 +26,7 @@ class TestGuru:
         yield
         self.browser.quit()
 
-    def test_registration_check_welcome_msg(self, setUp):
+    def test_registration(self, setUp):
 
         first_name = self.browser.find_element(by=By.NAME, value='firstName')
         last_name = self.browser.find_element(by=By.NAME, value='lastName')
