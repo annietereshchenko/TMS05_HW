@@ -57,15 +57,13 @@ class TestGuru:
         submit_button.click()
 
         names_after_register = self.browser.find_element(by=By.XPATH, value='//b[contains(text(),"Dear")]')
+        username_after_register = self.browser.find_element(by=By.XPATH, value='//b[contains(text(),"Note: Your")]')
+
         act_welcome_msg = names_after_register.text
         exp_welcome_msg = f'Dear {self.first_name} {self.last_name},'
 
         assert act_welcome_msg == exp_welcome_msg
 
-    def test_registration_check_username(self, setUp):
-
-        self.test_registration_check_welcome_msg(self)
-        username_after_register = self.browser.find_element(by=By.XPATH, value='//b[contains(text(),"Note: Your")]')
         act_username = username_after_register.text
         exp_username = f'Note: Your user name is {self.username}.'
 
