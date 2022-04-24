@@ -24,6 +24,8 @@ class TestAP:
     home_phone = '80173444444'
     address_alias = 'My address'
     test_email = get_random_email()
+    # если понадобится запускать тесты без регистрации, заменить в тесте test_login test_email на registered_email
+    registered_email = 'test18441@mail.com'
 
     @pytest.fixture()
     def setUp(self):
@@ -75,8 +77,6 @@ class TestAP:
         mobile_phone = self.browser.find_element(by=By.ID, value='phone_mobile')
         address_alias = self.browser.find_element(by=By.ID, value='alias')
         register_button = self.browser.find_element(by=By.ID, value='submitAccount')
-
-        assert gender_radio_button.is_displayed()
 
         gender_radio_button.click()
         first_name.send_keys(self.first_name)
